@@ -1,6 +1,6 @@
 # Multivariate Data Analysis Group (MDAG) workshop
 
-# User-friendly biplots in R with biplotEZ
+# Beyond multivariate applications: Quarto for reproducible interactive documents
 
 <img src="MDAG.png" align="right" width="150" />
 
