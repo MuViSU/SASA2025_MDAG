@@ -4,7 +4,7 @@
 
 <img src="MDAG.png" align="right" width="150" />
 
-Biplots are valuable visualisation tools in exploratory data analysis. In its simplest form, biplots are regarded as generalised scatterplots for more than two variables. The rows of a data matrix are represented as sample points while the columns are represented as variable axes. Although the interpretation in terms of samples and variable axes dates from the work of Gower in the 1990’s, the application has been limited by the availability of EZ-to-use software. In this presentation we will look at the basic linear algebra behind popular forms of biplots: Principal Component Analysis (PCA), Canonical Variate Analysis (CVA) and biplots of Correspondence Analysis (CA) amongst others. The availability of software limits biplot application to expert users. Providing an EZier to use package for practitioners wanting to visualise their data, encouraged the development of a user-friendly R package. In this workshop you will be introduced to the main aspects of biplot methodology and receive access to the newly developed functions of the biplotEZ R package with applications on real data in various contexts.
+This workshop will focus on aspects of the open-source scientific and technical publishing system, Quarto. Various output formats and best practices of each will be considered to firstly create static output for documents, followed by principles to adapt static documents to dynamic output such as HTML presentations. Strategies to optimally use qmd documents collaboratively with GitHub will be given. Finally, tips will be provided to construct personal websites using Quarto and GitHub with automatic updating capabilities.
 
 **Organisers**: 
 
