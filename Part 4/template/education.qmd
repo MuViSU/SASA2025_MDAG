@@ -1,0 +1,23 @@
+---
+title: "Education"
+---
+
+## Degrees
+
+| Year | Degree | Institution |
+|:-----------------------|:-----------------------|:-----------------------|
+| XXX | Ph.D | University, Country |
+| XXX | MSc  | University, Country |
+| XXX | XXX | University, Country |
+
+## Positions
+
+| Year | Position | Institution |
+|:-----------------------|:-----------------------|:-----------------------|
+| XXX - current | Level | Institution |
+| XXX - XXX | Level | Institution |
+Mathematical Statistics and Actuarial Science |
+
+## Awards
+
+-   Recipient of the MDAG best website award 2025.
