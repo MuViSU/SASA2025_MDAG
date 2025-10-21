@@ -1,0 +1,145 @@
+---
+title: "My first presentation"
+author: "Raeesa"
+date: "24 November 2025"
+format: 
+  revealjs:
+    logo: MDAG.png
+    transition: fade        # none | slide | convex | concave | zoom
+    transition-speed: fast  # default | fast | slow 
+editor: visual
+---
+
+## Hello Quarto
+
+Welcome to my very first Quarto slide!\
+This is where **code meets creativity** - a place where I can mix text, equations, and graphics to tell a data story.
+
+-   I wrote this myself\
+-   It’s clean, simple, and reproducible\
+-   Next step: I’ll add a code chunk!
+
+## Some cool output
+
+```{r}
+library(fortunes)
+library(bipl5)
+
+# prints a random R-related quote
+fortune()  
+```
+
+## Load and display data
+
+```{r}
+library(DT)
+datatable(iris)
+```
+
+## 
+
+```{r,echo=TRUE}
+library(biplotEZ)
+bp <- biplot(iris,scale=TRUE) |> 
+  PCA(group.aes=iris$Species) |> 
+  axes(col="black") |> 
+  samples(col=c("pink","orange","firebrick3"),opacity = 0.7) |>
+  plot()
+```
+
+## Interactivity
+
+```{r}
+#| fig-width: 9
+#| fig-height: 6
+library(ggplot2) ; library(plotly)
+p <- ggplot(mtcars, aes(hp, mpg, color = factor(cyl))) +
+  geom_point(size = 3, alpha = 0.85) +
+  geom_smooth(method = "lm", se = FALSE) +
+  theme_minimal() +
+  labs(
+    title = "Fuel Efficiency vs Horsepower",
+    x = "Horsepower", y = "Miles per Gallon", color = "Cyl"
+  )
+ggplotly(p)
+```
+
+## Interactive with a 3D plot
+
+```{r}
+#| fig-width: 9
+#| fig-height: 6
+library(plotly)
+
+mtcars$am[which(mtcars$am == 0)] <- 'Automatic'
+mtcars$am[which(mtcars$am == 1)] <- 'Manual'
+mtcars$am <- as.factor(mtcars$am)
+
+fig <- plot_ly(mtcars, x = ~wt, y = ~hp, z = ~qsec, color = ~am, colors = c('#BF382A', '#0C4B8E'))
+fig <- fig %>% add_markers()
+fig <- fig %>% layout(scene = list(xaxis = list(title = 'Weight'),
+                     yaxis = list(title = 'Gross horsepower'),
+                     zaxis = list(title = '1/4 mile time')))
+
+fig
+```
+
+## Plot with `echarts4r` package
+
+```{r}
+#| fig-width: 9
+#| fig-height: 6
+library(echarts4r)
+iris |> 
+  group_by(Species) |> 
+  e_charts(Sepal.Length) |> 
+  e_line(Sepal.Width) |> 
+  e_lm(Sepal.Width ~ Sepal.Length) |> 
+  e_x_axis(min = 4)
+```
+
+## Add a two column layout
+
+::::: columns
+::: column
+**Left column**
+
+Here we can write explanations, bullet points, or even code.
+
+-   Text fits neatly in its own column.
+-   Use markdown formatting normally.
+:::
+
+::: column
+**Right column**
+
+Include figures or tables here:
+
+```{r}
+library(biplotEZ)
+bp <- biplot(iris,scale=TRUE) |> PCA(group.aes=iris$Species) |> plot()
+```
+:::
+:::::
+
+## Insert an image
+
+![Like and subscribe!](MDAG.png)
+
+## Add incremental points
+
+::: incremental
+-   First point
+-   Second point
+-   Third point
+:::
+
+## Callout boxes
+
+> We could have something looking like this. It can span over many lines. Or something more pretty like this...
+
+::: callout-tip
+### Tips
+
+A structured Quarto callout.
+:::
