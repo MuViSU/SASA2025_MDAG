@@ -1,0 +1,469 @@
+---
+title: "Beyond multivariate applications: Quarto for reproducible interactive documents"
+author: "Sean van der Merwe, Johané Nienkemper-Swanepoel, Raeesa Ganey"
+format: 
+  revealjs: 
+    theme: [default, MDAG1.scss]
+    logo: MDAGlogo.png
+    footer: "2025/11/25 - MDAG"
+    slide-number: "c/t"
+    chalkboard: true
+    margin: 0.05
+    parallax-background-image: "stats_background.jpg"
+    parallax-background-size: "2304px 1536px"
+    parallax-background-vertical: 80
+execute:
+  echo: false
+---
+
+
+# Introduction
+
+For the second part of the workshop:
+
+-   Details matter, so ask questions immediately if you don't follow
+-   No, you don't have to remember everything, you can refer back to these slides, but the more key concepts you remember the better
+
+You can access Part 1 of the slides at *seanvdm.co.za/mdag2025* and on the last slide of Part 1 you will find a link to all the resources for the day, *including Part 2*.
+
+```{r}
+#| warning: false
+#| message: false
+#| results: hide
+options(scipen = 12)
+library(knitr)
+opts_chunk$set(fig.ext = 'svg', dev = 'svg', fig.align = 'center')
+wrap_strings <- function(vector_of_strings, width){ as.character( sapply( vector_of_strings, \(x) { paste( strwrap(x, width=width), collapse="\n")}))}
+
+MDAGcolours <- c(SASAblue = "#3B4569", lighter = "#5968A2", DarkRed = "#A71930", DarkBlue = "#0F204B", Black="#000000FF", O1 = "#848d97", O2 = "#e6edf3", Main = "#1E2327")
+library(tidyverse)
+
+library(plotly)
+plotly_table_MDAG <- function(datafrm, height = "100%", width = "100%", 
+              colors=MDAGcolours, useRowNames = FALSE, rowNamesHeading = " ") {
+  datafrm <- as.data.frame(datafrm)
+  nms <- names(datafrm)
+  if (useRowNames) {
+    datafrm <- data.frame(row.names(datafrm), datafrm, row.names = NULL)
+    nms <- c(rowNamesHeading, nms)
+    names(datafrm) <- nms
+  }
+  k <- ncol(datafrm)
+  algn <- rep('center', k)
+  cell_values <- rbind(t(as.matrix(unname(datafrm))))
+  fig <- plot_ly(
+  type = 'table',
+  height = height,
+  width = width,
+  header = list(
+    values = nms,
+    align = algn,
+    line = list(width = 1, color = colors[2]),
+    fill = list(color = colors[1]),
+    font = list(family = "Arial", size = 14, color = "#FFFFFFFF")
+  ),
+  cells = list(
+    values = cell_values,
+    align = algn,
+    line = list(color = colors[2], width = 1),
+    fill = list(color = list(rep(c("#FFFFFFFF", colors[4]), ceiling(length(cell_values)/2)))),
+    font = list(family = "Arial", size = 12, color = colors[3])
+  ))
+fig
+}
+plotly_colours <- MDAGcolours |> unname()
+
+library(visNetwork)
+library(htmlwidgets)
+library(widgetframe)
+```
+
+
+# Part 2 - Details
+
+How do you get this power for yourself?
+
+Should you even try to get this power? Isn't is dangerous?
+
+## What are the downsides to interactive materials?
+
+The biggest downsides are obvious when you try to distribute it:
+
+-   Interactive materials are great for slow exploration, not for scanning
+-   It is not immediately obvious what the author wants to convey
+-   It allows for the audience to draw their own meaning and interpretation
+    -   **Requires that the recipient understands that they are meant to interact with it**
+-   More difficult to email or send, but not impossible
+    -   Interactive formats are designed to be hosted, not distributed
+
+## Static Formats {.smaller}
+
+-   Microsoft Word (.docx) and PowerPoint (.pptx)
+    -   Used in industry in most of the world
+    -   A lot of precise control (often a bad thing)
+    -   Great for quickly creating short documents with precise formatting, like business letters, position statements, and *assignments*
+    -   For longer documents the use of styles is essential to avoid a mess
+    -   Alternatives include OnlyOffice, LibreOffice, Google Docs
+
+-   Portable Document Format (.pdf)
+    -   Extremely precise control of everything
+    -   It has no concept of paragraphs, it's just letters, lines, and pictures
+    -   Do not create documents in this format, only convert and manipulate
+
+## Interoperability
+
+PDF and HTML are absorbing states, Word nearly so.
+
+```{r}
+#| fig-height: 6.4
+converting_network <- \() {
+  cols <- rev(viridisLite::turbo(9))[-1]
+  node_lables <- c('Markdown', 'Plain Text', 'GoogleDoc\nODF etc.', 'Word', 'PDF', 'HTML')
+  n_nodes <- length(node_lables)
+  nodes <- data.frame(id = 1:n_nodes, 
+                      label = node_lables,
+                      shape = c(rep("box", 3), rep("ellipse", 3)),
+                      color = cols[1:6],
+                      x = c(1, 1, 2, 2, 3, 3)*440, 
+                      y = c(1, 2, 1, 2, 1, 2)*200, 
+                      physics = rep(c(FALSE, TRUE, FALSE), c(1, n_nodes-3, 2)),
+                      font = "32px"
+                      )
+  from <- c(1:4, 1:3, 1, 1, 1, 2, 4)
+  to <- c(2:5, 3:5, 4, 5, 6, 6, 5)
+  edges <- data.frame(from = from,
+                      to   = to,
+                      arrows = "to", 
+                      length = (to - from)*120
+                      )
+visNetwork(nodes, edges, physics = TRUE)
+}
+frameWidget(converting_network())
+```
+
+# What powers all the flashiness?
+
+The interactivity is brought to you (under the hood) by JavaScript. You do not see it - it is very well hidden, but it is working in the background to display the figures and react to your inputs.
+
+The JavaScript accompanies (or is embedded in) HTML. No, you do not need to know any HTML at all, just like you don't need to know that a .docx is actually a .zip containing .xml files.
+
+All you need to learn is *Markdown* and a little of your favourite scripting language (*e.g. R*).
+
+## Markdown
+
+-   [Markdown](https://en.wikipedia.org/wiki/Markdown) is the new (2004) language of the technical internet
+    -   Places like GitHub, Reddit, StackExchange have supported it for a decade
+-   It is deliberately simple and easy to use
+    -   **You type what you mean and let the interpreter do the formatting**
+    -   It is made to be readable without needing to be converted or formatted
+-   GAI Chatbots write in Markdown!
+
+## Technicalities shouldn't matter
+
+-   The literate programming principle (made popular by Donald Knuth in the 90s via LaTeX) suggests that it is faster and easier to just type what you mean rather than fret over every detail
+-   ChatGPT doesn't understand the difference between a table and a code block, or a heading and a bold statement
+    -   **it is just generating text**
+    -   Yet you see neatly formatted output!
+    -   This is one area where you can really learn from AI: it doesn't touch the mouse to create math and neither should you
+-   Doing things manually wastes so much of your time
+
+## My workflow {.smaller}
+
+> I do almost all my work directly in markdown
+
+-   For consultation clients who use Word I give explanations, references or links, math (e.g. model definitions), code (optional), results (tables and figures), interpretation, and sometimes statistical conclusions by just typing text in one text file
+    -   I then press a button and get a perfectly formatted Word report with structure, table of contents, etc.
+-   For research I do the same, but choose the PDF option to get both a neat PDF and raw LaTeX + figure files
+-   For teaching I create all my assessments via markdown, including assignments, tests, quizzes, etc.
+    -   In class I type in markdown to explain concepts live and demonstrate principles
+-   As department head I write letters and implement processes via markdown
+
+## Let's learn markdown quickly
+
+-   Hashes make headings, 1 for a 1st level heading, 4 for 4th level, etc.
+    -   `# This is a big heading`, `## This is a smaller heading`, `###### This is a tiny heading`
+    -   `# This is a section slide heading`, `## This is a normal slide heading`
+-   `<https://www.this_is_a_link.com>`, `*This is italics*`, `**This is bold**`
+    -   `[This is a fancier link](https://pointing.to.this/)`
+-   `> ` starts a quote, `-    ` creates a bullet, and numbered lists are just `1.    `
+    -   See <https://quarto.org/docs/authoring/markdown-basics.html> for more
+
+## Other easy things you can do without code
+
+
+:::: {.columns}
+
+::: {.column width="60%"}
+::: {.border}
+Text with borders, perhaps in columns
+:::
+
+::: {.callout-note}
+A note
+:::
+
+:::
+
+::: {.column width="40%"}
+
+::: {.callout-warning}
+or a warning, [perhaps with a highlight]{.mark}
+:::
+
+:::
+
+::::
+
+## Static diagrams
+
+Interactive diagrams are fun, but require detailed specification. Simple diagrams can be done really fast with just basic labels:
+
+```{mermaid}
+flowchart LR
+    A{Is Y continuous?} -->|No| B(Table)
+    A -->|Yes| C{Is X1 continuous?}
+    C -->|No| D[Box plot]
+    C -->|Yes| E[Scatter plot]
+```
+
+```{r}
+#| eval: false
+#| echo: true
+flowchart LR
+    A{Is Y continuous?} -->|No| B(Table)
+    A -->|Yes| C{Is X1 continuous?}
+    C -->|No| D[Box plot]
+    C -->|Yes| E[Scatter plot]
+```
+
+## What about code
+
+-   Code blocks start and end with 3 backticks, such as ` ```{language options} some code ``` `
+-   "language" and "options" depend on the interpreter
+
+Quarto supports a lot of languages but I typically use R, Stan, CSS, and HTML only for my work.
+
+-   The most powerful option (use carefully) is "results: asis" 
+    -   which tells Quarto to process the *output* of the R code chunk as if it was part of the markdown document
+    -   This lets you create many pages of document from a single code block!
+
+## Technicalities that matter
+
+-   There are not many technicalities - it typically just works
+-   I could turn this presentation into a regular web page by only changing a few words here and there
+    -   A few more small changes and most of the presentation could be a Word document (or PowerPoint or Beamer)
+        -   I'd lose the interactivity though
+-   The more detail oriented you are the more small technicalities you will come across, most are easy to address though
+    -   Here's the most important issue in my view:
+
+[Let's talk graphics formats - click here.](pdfexample.pdf)
+
+# Graphics formats
+
+Every target format has ideal graphics formats for plots.
+
+## Word or PowerPoint
+
+::: {.callout-note}
+# My recommendation
+
+**Enhanced Metafile (.emf)**
+
+Catch: Requires the *devEMF* library, e.g.
+:::
+
+```{r}
+#| echo: true
+#| eval: false
+library(devEMF)
+knitr::opts_chunk$set(dev='emf', fig.ext='emf')
+```
+
+You can try the **Windows Metafile (.wmf)** format instead, which is built into R. It usually works but is buggy sometimes.
+
+Or you can use **Scalable Vector Graphics (.svg)** which works great in Office 365 Desktop.
+
+## PDF (LaTeX based)
+
+::: {.callout-note}
+# My recommendation
+
+**Portable Document Format (.pdf)**
+
+Catch: only works with PDF rendering
+:::
+
+Or you can use **Scalable Vector Graphics (.svg)** which works in theory but might be buggy in practice depending on your editor and packages.
+
+## RevealJS or other HTML based formats
+
+> For all static plots, e.g. base plot, ggplot2, biplotEZ, ..., use **Scalable Vector Graphics (.svg)** for the highest quality and smallest file size
+
+-   For interactive graphics you must use a **JavaScript (JS)** based format
+    -   Other formats can have animations, but they are not really interactive
+-   JavaScript only works in HTML based formats, rendering in a browser (any)
+    -   The script tells the browser what to do when your mouse interacts with the plot
+-   You **don't** need to learn any JS, you just use an R library
+
+## JS graphics options
+
+-   There any many JS graphics tools
+    -   Most are for Python. If you know Python you've probably heard of them already so I will skip
+    -   There are two that I'd like to mention: *plotly* and *echarts4r*
+
+::: {.callout-caution}
+# Plotly
+
+Plotly is the most popular, most powerful, and easiest to use by far. **BUT** the R package is no longer maintained and the R help files are on their way out 😢  
+:::
+
+::: {.callout-caution}
+# Echarts4r
+
+Echarts4r is new and maintained, but more difficult to use and limited in scope. 
+:::
+
+## To be continued ...
+
+In Part 3 we will work through the steps of:
+
+-   Creating HTML based Quarto documents or presentations, specifically with **RevealJS**
+-   Adding plots, including multivariate plots like **biplots**
+-   Creating a nice static ggplot, then making it interactive with **ggplotly**
+-   Making an interactive 3D plot directly in **plotly**
+-   Making interactive plots in general using **echarts4r**
+
+# Bonus: Writing to Excel
+
+In Part 1 we showed that we can play with data interactively on a slide for basic exploration. **What if you need the audience/students to actually work with the data though?**
+
+::: {.callout-caution}
+# What if you want to generate or prepare data for students?
+
+You might think, "Let me make it look nice manually by opening it in Excel," but then you decide to generate new data and you have to repeat those steps, again and again, and then you're going to ask yourself, "Why didn't I just make this part of the code?"
+:::
+
+## Writing to Excel
+
+-   When one does a large simulation study or extensive analysis, one often has to summarise the tables because they are just too large to fit on a page
+-   Yet, most of the audience is familiar with spreadsheets, including filters, sorts, ...
+-   Sometimes the best way to make your results interactive is to save it nicely in a spreadsheet
+
+R has several nice packages for this, the best of which are *openxlsx* and *openxlsx2*.
+
+```{r}
+#| echo: true
+#| eval: false
+mydata <- data.frame(Gender = sample(c("M","F"), 100, TRUE), Result = rbinom(100, 100, 0.7))
+list(SheetName = mydata) |> openxlsx::write.xlsx("FileName.xlsx") # or just mydata |> ...
+```
+
+## Statistics assignments {.smaller}
+
+-   Personally, I've been using this approach for over a decade when creating assignments
+-   I generate data sets that test the outcomes I am targeting in a controlled way
+-   I add randomness so that each student gets different data (but similar results)
+    -   If the randomness is small then it is still easy to mark, say with a rubric
+    -   If the randomness is larger then you can then give the marker and students a parameterised Quarto document
+        -   This means that each student has a personalised memo, specially just for them 😊 
+
+
+::: {.callout-note}
+# That's right
+
+**Quarto documents can take inputs!**
+:::
+
+
+## Cycling through students
+
+```{r}
+#| echo: true
+#| eval: false
+students <- c('2024000001', '2024000002', '2024000003', '2024000004',
+              '2024000005') # Get class list in R somehow
+# You can read student numbers from class list / mark list file:
+# students <- openxlsx::read.xlsx('mark_list.xlsx', startRow = 4)$Student.ID
+n <- 100
+students |> lapply(\(s) {   # Make a list of data frames
+  data.frame(
+    Mark = rbinom(n, 100, 0.6), 
+    Group = c('🐬', '🐪') |> sample(n, replace = TRUE), 
+    Height = rnorm(n, 1.67, 0.1) |> round(2)
+  )
+}) |> setNames(students) |> # Give the data frames names
+  openxlsx::write.xlsx('gen_data_3.xlsx', 
+        firstRow = TRUE, asTable = TRUE,
+        colWidths = c(10, 11, 12) # or "auto"
+     ) 
+```
+
+```{r}
+include_graphics("gen_data_3.png")
+```
+
+## Sidenote to the sidenote {.smaller}
+
+> When you introduce R to people who haven't used it before, where do you start?
+
+-   I always start in RStudio, with File -> New File -> Quarto Document (or R Markdown)
+    -   Just like with R Projects, RStudio will always and automatically set the working directory for you
+    -   I do not waste an hour trying to explain working directories, I just tell students to put the data in the same folder as the .qmd or .Rmd file
+        -   Relative referencing beats absolute referencing 99% of the time
+    -   Forces some structure
+        -   Encourages documentation and other good practices
+    -   Increases alignment between code and results
+
+## Parameterised documents {.smaller}
+
+At the start of each Quarto document is a YAML block. The only line that's compulsory is the *output* line that says what format we want, e.g. Word, PDF, PowerPoint, Beamer, revealjs, *etc.*
+
+```{r}
+#| eval: false
+#| echo: true
+---
+title: "Statistics assignment memorandum"
+author: "Sean van der Merwe"
+date: "`r format(Sys.Date(), '%Y-%m-%d')`"
+output:
+  word_document:
+    reference_docx: wordreference01.docx
+params: 
+  st: "2123456789"
+---
+```
+
+-   If we include parameters in the YAML then we can access them in the code, e.g. *params$st*
+-   We can set the parameter values via the "execute_params" input in the *quarto::quarto_render* function
+    -   You can have a separate script that renders the document for each student, in a loop 
+        -   and even emails it to each student if you have the right permissions
+
+## Reference documents
+
+-   For Word and PowerPoint you can create a special formatting document called a reference document
+-   You do this by making a new Quarto document of the target type and rendering it without changing anything
+    -   The content of this document is irrelevant so don't change it
+-   In Word/PowerPoint, you modify the **styles** of the document, as well as settings like margins, paper size, header/footer, and language
+-   For future documents you copy the reference document in the same folder and the new document and reference it in the YAML
+-   The result is then that you new document renders in the desired style and settings
+
+# Conclusion to Part 2
+
+-   Don't be flashy for the sake of being flashy (*e.g. slow slide transitions*)
+    -   You're going to just annoy yourself and distract the audience
+-   Think of your audience, the message you're trying to convey, and then ask, **"How can presentation technology support me in transferring information to my audience?"**
+
+> This presentation was created using the Reveal.js format in [Quarto](https://quarto.org/), using the [RStudio IDE](https://posit.co/products/open-source/rstudio/). Background image created using image editor [GIMP](https://www.gimp.org/) by compositing images from CoPilot.
+
+
+## If you're eager to start Part 3
+
+Try to create a basic Quarto document and render it.
+
+```{r}
+include_graphics("NewQuarto.png") # Figure out how to center
+```
+
+-   Type a title, your name, and select a format
+-   Find the "Render" button and click it (blue right arrow near the top with the word "Render" next to it)
+
