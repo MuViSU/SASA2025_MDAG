@@ -18,7 +18,7 @@ Sean van der Merwe, Raeesa Ganey and Johané Nienkemper-Swanepoel
 ## Before the workshop
 
 - Ensure that you have a recently updated version of R Studio on your laptop.
-- Create a personal GitHub account before the workshop. Refer to <a href="https://muvisu.github.io/SASA2025_MDAG/Part4a_preparation.html" target="_blank">Part 4a</a>.
+- Create a personal GitHub account before the workshop. Refer to [Part 4 preparation](Part4/Part4a_preparation.html).
 
 ## Workshop programme
 
@@ -30,7 +30,7 @@ Sean van der Merwe, Raeesa Ganey and Johané Nienkemper-Swanepoel
 |11:00-11:45|	**[Part 3](Part3)** Hands-on practical examples for presentations | Sean and Johané |
 |11:45-12:30|	**[Part 4](Part4)** Creating your own academic website | Johané | 
 
-**Links** to workshop folders provided in the table when clicking on the specific **Part**.
+**Links** to workshop folders are provided in the table when clicking on the specific **Part**.
 
 ## Workshop documents and slides
 
