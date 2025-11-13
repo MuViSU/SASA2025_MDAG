@@ -25,13 +25,24 @@ Sean van der Merwe, Raeesa Ganey and Johané Nienkemper-Swanepoel
 | Time | Topic | Presenter |
 |------|-------|-------|
 |09:00-09:45|	**[Part 1](Part1and2)** Background and possibilities | Sean |
-|09:45-10:30|	**Part 2** Important details, specifications and examples | Sean |
+|09:45-10:30|	**[Part 2](Part1and2)** Important details, specifications and examples | Sean |
 |10:30-11:00|	|BREAK |
-|11:00-11:45|	**Part 3** Hands-on practical examples for presentations | Sean and Johané |
-|11:45-12:30|	**Part 4** Creating your own academic website | Johané | 
+|11:00-11:45|	**[Part 3](Part3)** Hands-on practical examples for presentations | Sean and Johané |
+|11:45-12:30|	**[Part 4](Part4)** Creating your own academic website | Johané | 
 
-## Workshop Material
+**Links** to workshop folders provided in the table when clicking on the specific **Part**.
 
--    <a href="https://github.com/MuViSU/SASA2025_MDAG/tree/main/Part1and2" target="_blank">Part 1 and 2</a> - Sean van der Merwe
--    <a href="https://github.com/MuViSU/SASA2025_MDAG/tree/main/Part3" target="_blank">Part 3</a> - Raeesa Ganey
--    <a href="https://github.com/MuViSU/SASA2025_MDAG/tree/main/Part4" target="_blank">Part 4</a> - Johané Nienkemper-Swanepoel
+## Workshop documents and slides
+
+-   Part 1 - Sean van der Merwe
+    -    [Slides part 1](Part1and2/mdag2025p1.html)
+-   Part 2 - Sean van der Merwe
+    -    [Slides part 2](Part1and2/mdag2025p2.html)
+-   Part 3 - Raeesa Ganey
+    -    [Part 3 handout](Part3/DIY handout.html)
+    -    [Part 3 DIY](Part3/Adventures.html)
+-   Part 4 - Johané Nienkemper-Swanepoel
+    -    [Part 4 preparation](Part4/Part4a_preparation.html)
+    -    [Part 4 website](Part4/Part4a_createWebsite.html)
+    -    [Part 4 advanced](Part4/Part4a_advanced.html)
+    
