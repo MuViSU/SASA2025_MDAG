@@ -8,7 +8,7 @@ This workshop will focus on aspects of the open-source scientific and technical 
 
 **Organisers**: 
 
-[Sean van der Merwe](https://acadseanvdm.github.io/site/), [Raeesa Ganey](https://github.com/RaeesaGaney91) and [Johané Nienkemper-Swanepoel](https://github.com/jnienk)
+[Sean van der Merwe](https://acadseanvdm.github.io/site/), [Raeesa Ganey](https://raeesaganey91.github.io/rganey_quarto/talks.html) and [Johané Nienkemper-Swanepoel](https://github.com/jnienk/jns-quarto)
 
 ## Target audience
 
