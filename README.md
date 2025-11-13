@@ -14,11 +14,11 @@ Sean van der Merwe, Raeesa Ganey and Johané Nienkemper-Swanepoel
 
 | Time | Topic | Presenter |
 |------|-------|-------|
-|09:00-09:45|	**Part 1** Background and possibilities | Sean van der Merwe |
-|09:45-10:30|	**Part 2** Important details, specifications and examples | Sean van der Merwe |
+|09:00-09:45|	**Part 1** Background and possibilities | Sean |
+|09:45-10:30|	**Part 2** Important details, specifications and examples | Sean |
 |10:30-11:00|	|BREAK |
-|11:00-11:45|	**Part 3** Hands-on practical examples for presentations | Sean van der Merwe and Johané Nienkemper-Swanepoel |
-|11:45-12:30|	**Part 4** Creating your own academic website | Johané Nienkemper-Swanepoel| 
+|11:00-11:45|	**Part 3** Hands-on practical examples for presentations | Sean and Johané |
+|11:45-12:30|	**Part 4** Creating your own academic website | Johané | 
 
 ## Workshop Material
 
