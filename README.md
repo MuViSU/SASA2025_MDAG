@@ -10,6 +10,16 @@ This workshop will focus on aspects of the open-source scientific and technical 
 
 Sean van der Merwe, Raeesa Ganey and Johané Nienkemper-Swanepoel
 
+## Target audience
+
+- R users who would like to enhance their documents and presentations with interactive code and dynamic content.
+- People who are interested in creating personal websites for academic purposes.
+
+## Before the workshop
+
+- Ensure that you have a recently updated version of R Studio on your laptop.
+- Create a personal GitHub account before the workshop. Refer to <a href="https://github.com/MuViSU/SASA2025_MDAG/blob/main/Part4/Part4a_preparation.html" target="_blank">Part 4a</a>.
+
 ## Workshop programme
 
 | Time | Topic | Presenter |
@@ -25,16 +35,3 @@ Sean van der Merwe, Raeesa Ganey and Johané Nienkemper-Swanepoel
 -    <a href="https://github.com/MuViSU/SASA2025_MDAG/tree/main/Part1and2" target="_blank">Part 1 and 2</a> - Sean van der Merwe
 -    <a href="https://github.com/MuViSU/SASA2025_MDAG/tree/main/Part3" target="_blank">Part 3</a> - Raeesa Ganey
 -    <a href="https://github.com/MuViSU/SASA2025_MDAG/tree/main/Part4" target="_blank">Part 4</a> - Johané Nienkemper-Swanepoel
-
-
-## Target audience
-
-- R users who would like to enhance their documents and presentations with interactive code and dynamic content.
-- People who are interested in creating personal websites for academic purposes.
-
-
-## Prerequisites
-
-- Ensure that you have a recently updated version of R Studio on your laptop.
-- Create a personal GitHub account before the workshop. Refer to <a href="https://github.com/MuViSU/SASA2025_MDAG/blob/main/Part4/Part4a_preparation.html" target="_blank">Part 4a</a>.
-
