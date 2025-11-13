@@ -8,7 +8,7 @@ This workshop will focus on aspects of the open-source scientific and technical 
 
 **Organisers**: 
 
-Sean van der Merwe, Raeesa Ganey and Johané Nienkemper-Swanepoel
+[Sean van der Merwe](https://acadseanvdm.github.io/site/), [Raeesa Ganey](https://github.com/RaeesaGaney91) and [Johané Nienkemper-Swanepoel](https://github.com/jnienk)
 
 ## Target audience
 
@@ -39,7 +39,7 @@ Sean van der Merwe, Raeesa Ganey and Johané Nienkemper-Swanepoel
 -   Part 2 - Sean van der Merwe
     -    [Slides part 2](Part1and2/mdag2025p2.html)
 -   Part 3 - Raeesa Ganey
-    -    [Part 3 handout](Part3/DIY_handout.html)
+    -    [Part 3 handout](Part3/DIYhandout.html)
     -    [Part 3 DIY](Part3/Adventures.html)
 -   Part 4 - Johané Nienkemper-Swanepoel
     -    [Part 4 preparation](Part4/Part4a_preparation.html)
