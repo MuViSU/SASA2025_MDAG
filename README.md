@@ -1,4 +1,4 @@
-# Multivariate Data Analysis Group (MDAG) workshop
+# [Multivariate Data Analysis Group (MDAG) workshop](https://github.com/MuViSU/SASA2025_MDAG)
 
 # Beyond multivariate applications: Quarto for reproducible interactive documents
 
