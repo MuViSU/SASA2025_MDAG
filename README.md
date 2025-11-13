@@ -12,18 +12,19 @@ Sean van der Merwe, Raeesa Ganey and Johané Nienkemper-Swanepoel
 
 ## Workshop programme
 
-| Time | Topic | Presenter |
-|------|-------|-------|
-|09:00-09:45|	Background and possibilities | Sean van der Merwe |
-|09:45-10:30|	Important details, specifications and examples | Sean van der Merwe and Johané Nienkemper-Swanepoel|
+| Time | Topic | Presenter | Content creator |
+|------|-------|-------|-------|
+|09:00-09:45|	**Part 1** Background and possibilities | Sean van der Merwe | Sean van der Merwe |
+|09:45-10:30|	**Part 2** Important details, specifications and examples | Sean van der Merwe | Sean van der Merwe |
 |10:30-11:00|	|BREAK |
-|11:00-11:45|	Hands-on practical examples for presentations | Sean van der Merwe and Johané Nienkemper-Swanepoel |
-|11:45-12:30|	Creating your own academic website | Johané Nienkemper-Swanepoel|
+|11:00-11:45|	**Part 3** Hands-on practical examples for presentations | Sean van der Merwe and Johané Nienkemper-Swanepoel | Raeesa Ganey |
+|11:45-12:30|	**Part 4** Creating your own academic website | Johané Nienkemper-Swanepoel| Johané Nienkemper-Swanepoel|
 
-UPDATE LINKS
-<a href="https://MuViSU.github.io/SASA2025_MDAG/slides" target="_blank">MDAG workshop slides</a>
+## Material
 
-<a href="https://github.com/MuViSU/SASA2025_MDAG/tree/6d5a88a357a1d0c13c8eb2effa0ee58aa690ecd5/scripts" target="_blank">MDAG workshop script files</a>
+-    <a href="[Part 1 and 2](https://github.com/MuViSU/SASA2025_MDAG/tree/main/Part1and2)" target="_blank"></a>
+-    <a href="[Part 3](https://github.com/MuViSU/SASA2025_MDAG/tree/main/Part3)" target="_blank"></a>
+-    <a href="[Part 4](https://github.com/MuViSU/SASA2025_MDAG/tree/main/Part4)" target="_blank"></a>
 
 
 ## Target audience
@@ -35,4 +36,5 @@ UPDATE LINKS
 ## Prerequisites
 
 - Ensure that you have a recently updated version of R Studio on your laptop.
-- Create a personal GitHub account before the workshop.
+- Create a personal GitHub account before the workshop. Refer to <a href="[Part 4a](https://github.com/MuViSU/SASA2025_MDAG/blob/main/Part4/Part4a_preparation.html)" target="_blank"></a>.
+
