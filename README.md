@@ -43,6 +43,6 @@ Sean van der Merwe, Raeesa Ganey and Johané Nienkemper-Swanepoel
     -    [Part 3 DIY](Part3/Adventures.html)
 -   Part 4 - Johané Nienkemper-Swanepoel
     -    [Part 4 preparation](Part4/Part4a_preparation.html)
-    -    [Part 4 website](Part4/Part4a_createWebsite.html)
-    -    [Part 4 advanced](Part4/Part4a_advanced.html)
+    -    [Part 4 website](Part4/Part4b_createWebsite.html)
+    -    [Part 4 advanced](Part4/Part4c_advanced.html)
     
