@@ -22,9 +22,9 @@ Sean van der Merwe, Raeesa Ganey and Johané Nienkemper-Swanepoel
 
 ## Material
 
--    <a href="[Part 1 and 2](https://github.com/MuViSU/SASA2025_MDAG/tree/main/Part1and2)" target="_blank"></a>
--    <a href="[Part 3](https://github.com/MuViSU/SASA2025_MDAG/tree/main/Part3)" target="_blank"></a>
--    <a href="[Part 4](https://github.com/MuViSU/SASA2025_MDAG/tree/main/Part4)" target="_blank"></a>
+-    <a href="https://github.com/MuViSU/SASA2025_MDAG/tree/main/Part1and2" target="_blank">Part 1 and 2]</a>
+-    <a href="https://github.com/MuViSU/SASA2025_MDAG/tree/main/Part3" target="_blank">Part 3</a>
+-    <a href="https://github.com/MuViSU/SASA2025_MDAG/tree/main/Part4" target="_blank">Part 4</a>
 
 
 ## Target audience
@@ -36,5 +36,5 @@ Sean van der Merwe, Raeesa Ganey and Johané Nienkemper-Swanepoel
 ## Prerequisites
 
 - Ensure that you have a recently updated version of R Studio on your laptop.
-- Create a personal GitHub account before the workshop. Refer to <a href="[Part 4a](https://github.com/MuViSU/SASA2025_MDAG/blob/main/Part4/Part4a_preparation.html)" target="_blank"></a>.
+- Create a personal GitHub account before the workshop. Refer to <a href="https://github.com/MuViSU/SASA2025_MDAG/blob/main/Part4/Part4a_preparation.html" target="_blank">Part 4a</a>.
 
