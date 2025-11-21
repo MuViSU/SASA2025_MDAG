@@ -27,7 +27,7 @@ This workshop will focus on aspects of the open-source scientific and technical 
 |09:00-09:45|	**[Part 1](https://github.com/MuViSU/SASA2025_MDAG/tree/main/Part1and2)** Background and possibilities | Sean |
 |09:45-10:30|	**[Part 2](https://github.com/MuViSU/SASA2025_MDAG/tree/main/Part1and2)** Important details, specifications and examples | Sean |
 |10:30-11:00|	|BREAK |
-|11:00-11:45|	**[Part 3](https://github.com/MuViSU/SASA2025_MDAG/tree/main/Part3)** Hands-on practical examples for presentations | Sean and Johané |
+|11:00-11:45|	**[Part 3](https://github.com/MuViSU/SASA2025_MDAG/tree/main/Part3)** Hands-on practical examples for presentations | Sean and Raeesa |
 |11:45-12:30|	**[Part 4](https://github.com/MuViSU/SASA2025_MDAG/tree/main/Part4)** Creating your own academic website | Johané | 
 
 **Links** to workshop folders are provided in the table when clicking on the specific **Part**.
