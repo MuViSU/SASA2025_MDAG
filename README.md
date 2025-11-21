@@ -44,4 +44,5 @@ This workshop will focus on aspects of the open-source scientific and technical 
     -    [Part 4 preparation](Part4/Part4a_preparation.html)
     -    [Part 4 website](Part4/Part4b_createWebsite.html)
     -    [Part 4 advanced](Part4/Part4c_advanced.html)
+    -    [Part 4 slides](Part4/Part4_slides.html)
     
